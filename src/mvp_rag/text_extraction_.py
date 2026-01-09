@@ -101,9 +101,9 @@ class PDFProcessor:
                 and float(b.conf[0]) >= self.yolo_conf_threshold
                 for b in detections.boxes
             )
-            if (has_table and table_extraction=="True") and (has_picture and image_summary=="True"):
+            if (has_table and table_extraction) and (has_picture and image_summary):
                 pass
-            elif has_table and table_extraction=="True":
+            elif has_table and table_extraction:
                 img_bytes = io.BytesIO()
                 page_img.save(img_bytes, format="JPEG")
 
@@ -134,7 +134,7 @@ class PDFProcessor:
 
                     final_text.append(item["content"])
 
-            elif has_picture and image_summary=="True":
+            elif has_picture and image_summary:
                 pass
 
             else:
